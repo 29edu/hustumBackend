@@ -1,5 +1,10 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
+const crypto = require("crypto");
+
+// Generates a random 8-char uppercase hex ID, e.g. "A1B2C3D4"
+const generateChatId = () =>
+  crypto.randomBytes(4).toString("hex").toUpperCase();
 
 const userSchema = new mongoose.Schema(
   {
@@ -23,6 +28,13 @@ const userSchema = new mongoose.Schema(
     isAdmin: {
       type: Boolean,
       default: false,
+    },
+    // Each user gets a unique Chat ID automatically on creation
+    chatId: {
+      type: String,
+      unique: true,
+      index: true,
+      default: generateChatId, // Mongoose calls this function PER document
     },
     resetOtp: {
       type: String,
