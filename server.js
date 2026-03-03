@@ -17,6 +17,9 @@ const ratingRoutes = require("./routes/ratingRoutes");
 const improvementRoutes = require("./routes/improvementRoutes");
 const researchRoutes = require("./routes/researchRoutes");
 const lifeGoalRoutes = require("./routes/lifeGoalRoutes");
+const notificationRoutes = require("./routes/notificationRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+const projectRoutes = require("./routes/projectRoutes");
 const errorHandler = require("./middleware/errorHandler");
 const requestLogger = require("./middleware/requestLogger");
 
@@ -48,6 +51,9 @@ app.use("/api/ratings", ratingRoutes);
 app.use("/api/improvement", improvementRoutes);
 app.use("/api/research", researchRoutes);
 app.use("/api/life-goals", lifeGoalRoutes);
+app.use("/api/notifications", notificationRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api/projects", projectRoutes);
 
 // Health check route
 app.get("/", (req, res) => {

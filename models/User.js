@@ -20,6 +20,18 @@ const userSchema = new mongoose.Schema(
       required: true,
       minlength: 6,
     },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
+    resetOtp: {
+      type: String,
+      default: null,
+    },
+    resetOtpExpiry: {
+      type: Date,
+      default: null,
+    },
   },
   { timestamps: true },
 );
